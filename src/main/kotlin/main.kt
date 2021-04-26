@@ -2,10 +2,9 @@ fun main() {
 
     val Esgrima = Esgrima(NombreParticipante("Javier"))
 
-    val Maraton = Maratón(NombreParticipante("Antonio"))
+    val Maraton = Maraton(NombreParticipante("Antonio"))
 
-    val Natacion = Natación(NombreParticipante("Paco"))
-
+    val Natacion = Natacion(NombreParticipante("Paco"))
 
     val listaEspecialidades = mutableListOf(Esgrima, Maraton, Natacion)
     listaEspecialidades.forEach {
@@ -23,6 +22,16 @@ open class Participante(val nombreParticipante : NombreParticipante){
     fun nombreParticipante() {
 
         println("Soy ${nombreParticipante.nombre} ")
+
+    }
+}
+
+
+
+class Maraton(nombre : NombreParticipante) : Participante(nombre), Decir {
+
+    override fun decir() {
+        println("yo corro durante mucho rato")
     }
 }
 
@@ -33,14 +42,7 @@ class Esgrima(nombre : NombreParticipante) : Participante(nombre), Decir {
     }
 }
 
-class Maratón(nombre : NombreParticipante) : Participante(nombre), Decir {
-
-    override fun decir() {
-        println("yo corro durante mucho rato")
-    }
-}
-
-class Natación(nombre : NombreParticipante) : Participante(nombre), Decir {
+class Natacion(nombre : NombreParticipante) : Participante(nombre), Decir {
 
     override fun decir() {
         println("chof, chof, chof")
