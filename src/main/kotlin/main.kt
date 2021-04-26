@@ -1,30 +1,51 @@
-fun main(){
-    val Especialidad1 = Especialidad("esgrima")
-    val Especialidad2 = Especialidad("maraton")
-    val Especilaidad3 = Especialidad("natacion")
+fun main() {
 
-    //val listaMacotas = mutableListOf(Mascota1, Mascota2)
+    val Esgrima = Esgrima(NombreParticipante("Javier"))
 
+    val Maraton = Maratón(NombreParticipante("Antonio"))
 
-}
-
-class Participantes(var nombre : Nombre,) {
+    val Natacion = Natación(NombreParticipante("Paco"))
 
 
-    fun escribirEspecialidad() {
-
-
+    val listaEspecialidades = mutableListOf(Esgrima, Maraton, Natacion)
+    listaEspecialidades.forEach {
+        it.nombreParticipante()
+        it.decir()
 
     }
 
 }
 
+class NombreParticipante(var nombre: String)
 
-class Nombre(var nombre: String){
+open class Participante(val nombreParticipante : NombreParticipante){
 
+    fun nombreParticipante() {
+
+        println("Soy ${nombreParticipante.nombre} ")
+    }
 }
 
-class Especialidad (var nombreEspecialidad: String){
+class Esgrima(nombre : NombreParticipante) : Participante(nombre), Decir {
 
+    override fun decir() {
+        println("yo pego espadazos")
+    }
 }
 
+class Maratón(nombre : NombreParticipante) : Participante(nombre), Decir {
+
+    override fun decir() {
+        println("yo corro durante mucho rato")
+    }
+}
+
+class Natación(nombre : NombreParticipante) : Participante(nombre), Decir {
+
+    override fun decir() {
+        println("chof, chof, chof")
+    }
+}
+interface Decir {
+    fun decir()
+}
